@@ -88,7 +88,7 @@ try {
       WHERE username=$1;
   `,[username]);
   
-  return(rows);
+  return attachActivitiesToRoutines (rows);
 } catch (error) {
   console.log("error gettin a routine by user");
   throw error;
@@ -106,7 +106,7 @@ async function getPublicRoutinesByUser({ username }) {
     `,
       [username]
     );
-    return rows;
+    return attachActivitiesToRoutines (rows);
   } catch (error) {
     console.error("error getting a public routine by user");
     throw error;
@@ -125,7 +125,7 @@ try {
   `,
     [id]
   );
-  return rows;
+  return attachActivitiesToRoutines(rows);
 } catch (error) {
   console.error("error getting public routines by activity");
   throw error;
